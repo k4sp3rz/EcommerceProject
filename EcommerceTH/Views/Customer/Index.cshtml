@@ -1,0 +1,76 @@
+﻿@model IEnumerable<EcommerceTH.data.Customer>
+
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h1>Customer list</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameCus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PhoneCus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmailCus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Point)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Viplevel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailCus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Point)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Viplevel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Idcus">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Idcus">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Idcus">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

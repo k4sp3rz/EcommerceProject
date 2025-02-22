@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Register";
+}
+
+<h2>Register</h2>
+
+@if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+{
+    <div class="alert alert-danger">@ViewBag.ErrorMessage</div>
+}
+
+<form method="post" class="register-form">
+    <div class="form-group">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" class="form-control" required />
+    </div>
+    <div class="form-group">
+        <label for="number">Phone number:</label>
+        <input type="text" id="number" name="phone" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="confirm-password">Confirm Password:</label>
+        <input type="password" id="confirm-password" name="confirmPassword" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Register</button>
+</form>
+
+<style>
+    .register-form {
+        max-width: 400px;
+        margin: auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background: #f9f9f9;
+    }
+    .form-group {
+        margin-bottom: 15px;
+    }
+    .btn-primary {
+        width: 100%;
+    }
+</style>
