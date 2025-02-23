@@ -1,6 +1,7 @@
 ﻿using EcommerceTH.data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using System.Threading.Tasks;
@@ -44,6 +45,13 @@ namespace EcommerceTH.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
+            ViewBag.RoleList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Admin", Text = "Admin" },
+        new SelectListItem { Value = "User", Text = "User" },
+        new SelectListItem { Value = "Manager", Text = "Manager" }
+    };
+
             return View();
         }
 
@@ -58,9 +66,17 @@ namespace EcommerceTH.Controllers
                 await _db.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+
+            // Repopulate roles in case of validation errors
+            ViewBag.RoleList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Admin", Text = "Admin" },
+        new SelectListItem { Value = "User", Text = "User" },
+        new SelectListItem { Value = "Manager", Text = "Manager" }
+    };
+
             return View(customer);
         }
-
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -74,6 +90,15 @@ namespace EcommerceTH.Controllers
             {
                 return NotFound();
             }
+
+            // Populate Role dropdown
+            ViewBag.RoleList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Admin", Text = "Admin" },
+        new SelectListItem { Value = "User", Text = "User" },
+        new SelectListItem { Value = "Manager", Text = "Manager" }
+    };
+
             return View(customer);
         }
 
@@ -107,6 +132,15 @@ namespace EcommerceTH.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+
+            // Repopulate Role dropdown in case of validation errors
+            ViewBag.RoleList = new List<SelectListItem>
+    {
+        new SelectListItem { Value = "Admin", Text = "Admin" },
+        new SelectListItem { Value = "User", Text = "User" },
+        new SelectListItem { Value = "Manager", Text = "Manager" }
+    };
+
             return View(customer);
         }
 
